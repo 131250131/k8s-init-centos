@@ -60,7 +60,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 docker pull registry.cn-shenzhen.aliyuncs.com/cp_m/flannel:v0.10.0-amd64
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
 
-cp kubelet.conf /etc/sysconfig/
+cp kubelet /etc/sysconfig/
 
 kubeadm init --config kubeadm-master.config
 
