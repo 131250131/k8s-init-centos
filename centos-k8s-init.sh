@@ -21,13 +21,13 @@ yum install kernel-devel
 #systemctl stop firewalld
 #systemctl disable firewalld
 
-cp ../k8s.conf /etc/sysctl.d/k8s.conf
+cp k8s.conf /etc/sysctl.d/k8s.conf
 modprobe br_netfilter
 sysctl -p /etc/sysctl.d/k8s.conf
 
 mv CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 
-cp ../kubernetes.repo /etc/yum.repos.d/kubernetes.repo
+cp kubernetes.repo /etc/yum.repos.d/kubernetes.repo
 yum makecache fast
 yum install -y kubelet kubeadm kubectl
 
