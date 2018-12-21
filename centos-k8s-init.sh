@@ -51,22 +51,13 @@ modprobe ip_vs_sh
 modprobe nf_conntrack_ipv4
 lsmod | grep ip_vs
 
-
-kubeadm config images pull --config kubeadm-master.config
-
-rm -rf $HOME/.kube
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
 docker pull registry.cn-shenzhen.aliyuncs.com/cp_m/flannel:v0.10.0-amd64
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
+sh tag-sh.sh
 
 cp kubelet /etc/sysconfig/
 
 kubeadm init --config kubeadm-master.config
-
-sh tag-sh.sh
 
 kubeadm reset -f
 
