@@ -18,8 +18,8 @@ sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
 yum install gcc
 yum install kernel-devel
 
-#systemctl stop firewalld
-#systemctl disable firewalld
+systemctl stop firewalld
+systemctl disable firewalld
 
 cp k8s.conf /etc/sysctl.d/k8s.conf
 modprobe br_netfilter
@@ -59,6 +59,7 @@ cp kubelet /etc/sysconfig/
 
 systemctl enable kubelet && systemctl restart kubelet
 
+kubeadm config images pull --config kubeadm-master.config
 kubeadm init --config kubeadm-master.config
 
 kubeadm reset -f
