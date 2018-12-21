@@ -57,6 +57,8 @@ sh tag-sh.sh
 
 cp kubelet /etc/sysconfig/
 
+systemctl enable kubelet && systemctl restart kubelet
+
 kubeadm init --config kubeadm-master.config
 
 kubeadm reset -f
