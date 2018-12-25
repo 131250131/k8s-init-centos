@@ -51,6 +51,15 @@ modprobe ip_vs_sh
 modprobe nf_conntrack_ipv4
 lsmod | grep ip_vs
 
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.13.1
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.13.1
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.13.1
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.13.1
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.2.24
+docker pull  registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.2.2
+
 docker pull registry.cn-shenzhen.aliyuncs.com/cp_m/flannel:v0.10.0-amd64
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0
 sh tag-sh.sh
