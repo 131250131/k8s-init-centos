@@ -25,11 +25,19 @@ cp k8s.conf /etc/sysctl.d/k8s.conf
 modprobe br_netfilter
 sysctl -p /etc/sysctl.d/k8s.conf
 
-mv CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
+echo 'enable iptable kernel parameter'
+cat >> /etc/sysctl.conf <<EOF
+net.ipv4.ip_forward=1
+EOF
+sysctl -p
+
+cp CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 
 cp kubernetes.repo /etc/yum.repos.d/kubernetes.repo
 yum makecache fast
 yum install -y kubelet kubeadm kubectl
+systemctl daemon-reload
+systemctl enable kubelet.service
 
 # 临时禁用selinux
 # 永久关闭 修改/etc/sysconfig/selinux文件设置
